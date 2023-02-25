@@ -1,0 +1,12 @@
+image: hashicorp/terraform:1.3.7
+
+pipelines:
+    default:
+      - step:
+          name: Build and deploy
+          services:
+            - docker
+          script:
+            - export VERSION=$BITBUCKET_BUILD_NUMBER
+            -  chmod +x ./scripts/deploy.sh
+            - ./scripts/deploy.sh
